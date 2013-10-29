@@ -1,4 +1,4 @@
-package tol.sqat.session6.tests;
+package oulu.fsecure.tdd.day2.tests;
 
 import static org.junit.Assert.*;
 

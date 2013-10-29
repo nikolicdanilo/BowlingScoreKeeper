@@ -1,4 +1,4 @@
-package tol.sqat.session6;
+package oulu.fsecure.tdd.day2;
 
 
 public class Frame {
