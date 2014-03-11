@@ -1,4 +1,4 @@
-package oulu.fsecure.tdd.day2.tests;
+package upm.tdd.training.tests;
 
 import static org.junit.Assert.*;
 

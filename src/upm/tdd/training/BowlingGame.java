@@ -1,4 +1,4 @@
-package oulu.fsecure.tdd.day2;
+package upm.tdd.training;
 import java.util.ArrayList;
 import java.util.List;
 
