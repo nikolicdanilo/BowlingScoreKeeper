@@ -15,3 +15,12 @@ A strike is when the player knocks down all 10 pins on his first try.  The bonus
 In the tenth frame, a player who rolls a spare or strike is allowed to have bonus throws to complete the frame.  However, no more than three balls can be rolled in tenth frame.
 
 ![BSK](http://snappyimages.nextwavesrl.netdna-cdn.com/img/fc6a24b4e90cd51040712116c3e87f4e.png)
+
+The preceding scorecard shows an example game. Each box shows a frame where the first row contain the number of pins knocked down in the first and second throws and the second row shows the game score at that point in time. (See further explanations below) 
+-	In the first frame, the player knocked down 1 pin with the first throw and 4 more with the second. [1,4] denotes the pins knocked down in the first and second throw of the frame. The score of the frame is 1+4+5.
+-	The score of the second frame ([4,5]) is 4+5=9. That makes the game score 14, the sum of the first two frame scores.
+-	The third frame [6,4] is a spare. Frame score including the bonus points can not be calculated for this frame until the next ball is rolled. In the fourth frame [5, 5], 5 balls are knocked down in the first throw. So, the score of third frame is calculated as 10 + 5 = 15. 
+-	Frame 5 [10, 0] is a strike. It’s score including the bonus points, after the next two throws can be calculated as 10 + 0 + 1 = 11.
+-	Ninth frame is a strike. It’s score, after the next two throws can be calculated as 10 + 2 + 8 = 20.
+-	The last frame [2,8] is a spare. Therefore, the game has one bonus throw. 6 pins are knocked down in bonus throw. So, the score of the last frame is 10 + 6 = 16.
+
