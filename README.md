@@ -27,3 +27,4 @@ The preceding scorecard shows an example game. Each box shows a frame where the 
 -	Ninth frame is a strike. It’s score, after the next two throws can be calculated as 10 + 2 + 8 = 20.
 -	The last frame [2,8] is a spare. Therefore, the game has one bonus throw. 6 pins are knocked down in bonus throw. So, the score of the last frame is 10 + 6 = 16.
 
+**PLEASE TAKE THE QUESTIONNAIRE AT:** [https://goo.gl/forms/ToUMC5cqJVbRBcbk1](https://goo.gl/forms/ToUMC5cqJVbRBcbk1)
