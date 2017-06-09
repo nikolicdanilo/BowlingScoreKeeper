@@ -13,8 +13,220 @@ import upm.tdd.training.Frame;
 public class TestBowlingScoreKeeper {
 	BowlingGame testGame;
 	Frame testFrame;
-
 	@Test
+	public void testNotNull(){
+		testGame= new BowlingGame();
+		assertNotNull(testGame);
+	}
+	@Test
+	public void testScore() throws BowlingException{
+		testGame= new BowlingGame();
+		testGame.addFrame(new Frame(3,4));
+		assertEquals(7,testGame.score());
+	}
+	@Test
+	public void testRezultatViseFrejmova() throws BowlingException{
+		testGame= new BowlingGame();
+		testGame.addFrame(new Frame(3,4));
+		testGame.addFrame(new Frame(4,3));
+		assertEquals(14,testGame.score());
+	}
+	@Test
+	public void testDaLiJeStrajk() throws BowlingException{
+		testGame= new BowlingGame();
+		testFrame=new Frame(10,0);
+		
+		assertTrue(testFrame.isStrike());
+	}
+	@Test
+	public void testDaLiJeSper() throws BowlingException{
+		testGame= new BowlingGame();
+		testFrame=new Frame(5,5);
+		
+		assertTrue(testFrame.isSpare());
+	}
+	@Test
+	public void testRezultatSaBonusom() throws BowlingException{
+		testFrame= new Frame(2,4);
+		testFrame.addBonus(5);
+		assertEquals(11,testFrame.scoreWithBonus());
+	}
+	@Test
+	public void testRezultatSaBonusomOdSper() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(5,5));
+		testGame.addFrame(new Frame(4,4));
+		assertEquals(22,testGame.scoreWithBonus());
+	}
+	@Test
+	public void testRezultatSaBonusomOdSper1() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(5,5));
+		testGame.addFrame(new Frame(5,5));
+		
+		assertEquals(25,testGame.scoreWithBonus());
+	}
+	@Test
+	public void testRezultatSaBonusomOdStrajk() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(4,5));
+		
+		assertEquals(28,testGame.scoreWithBonus());
+	}
+	@Test
+	public void testRezultatSaBonusomOdStrajk2puta() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(1,6));
+		
+		assertEquals(45,testGame.scoreWithBonus());
+	}
+	@Test
+	public void testRezultatSaBonusomSviFrejmovic() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(5,5));
+		testGame.setBonus(3, 0);
+		
+		
+		assertEquals(100,testGame.scoreWithBonus());
+	}
+	@Test(expected=BowlingException.class)
+	public void testRezultatSaDodatnimBacanjemSpareSetBonusNijeZaDrugoBacanjeNula() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(5,5));
+		testGame.setBonus(3, 3);
+	}
+	@Test
+	public void testRezultatSaBonusomStrikeUPoslednjem() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(10,0));
+		testGame.setBonus(5, 5);
+		
+		
+		assertEquals(107,testGame.scoreWithBonus());
+	}
+	@Test(expected=BowlingException.class)
+	public void testRezultatSaBonusomStrikeUPoslednjemNeDobarRezultat() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(10,0));
+		testGame.setBonus(11, 5);
+		
+		
+		
+	}
+	@Test(expected=BowlingException.class)
+	public void testRezultatSaBonusomSpareUPoslednjemLosBonus() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(5,5));
+		testGame.setBonus(11, 0);		
+		
+	}
+	@Test(expected=BowlingException.class)
+	public void testBonusDodanPrePoslednjegBacanja() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		
+		testGame.setBonus(11, 0);		
+		
+	}
+	@Test(expected=BowlingException.class)
+	public void testPreviseFrejmova() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		testGame.addFrame(new Frame(1,6));
+		
+			
+	}
+	@Test(expected=BowlingException.class)
+	public void testBacanjaUFrejmuPrelazeOgranicenje() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(6,5));	
+	}
+	@Test
+	public void testRezultatMax() throws BowlingException{
+		testGame=new BowlingGame();
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.addFrame(new Frame(10,0));
+		testGame.setBonus(10, 10);
+		
+		
+		assertEquals(300,testGame.scoreWithBonus());
+	}
+	
+	
+
+	/*@Test
 	public void testWithOutSpareOrStrike() throws BowlingException {
 		testGame=new BowlingGame();
 		for(int i=0;i<10;i++){
@@ -180,6 +392,6 @@ public class TestBowlingScoreKeeper {
 		game.setBonus(6,0);	
 		assertEquals(133, game.scoreWithBonus());
 
-	}
+	}*/
 
 }
